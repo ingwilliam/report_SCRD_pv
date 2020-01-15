@@ -131,7 +131,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('example_061.pdf', 'I');
+$pdf->Output('propuesta_inscrita_'.$_GET["id"].'.pdf', 'I');
 
 //============================================================+
 // END OF FILE
