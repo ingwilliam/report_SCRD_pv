@@ -26,6 +26,7 @@
 
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
+include 'config/config.php';
 
 class MYPDF extends TCPDF {
 
@@ -112,11 +113,11 @@ $pdf->AddPage();
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,"http://localhost/crud_SCRD_pv/api/PropuestasWS/reporte_propuesta_inscrita/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/PropuestasWS/reporte_propuesta_inscrita/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
-curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&id=".$_GET["id"]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&id=".$_GET["id"]."&vi=".$_GET["vi"]);
  
 // recibimos la respuesta y la guardamos en una variable
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
