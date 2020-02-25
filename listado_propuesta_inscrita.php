@@ -133,7 +133,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('listado_propuesta_inscrita_'.$_GET["id"].'.pdf', 'I');
+$pdf->Output('listado_propuesta_inscrita_'.$_GET["id"].'.pdf', 'D');
 
 //============================================================+
 // END OF FILE
