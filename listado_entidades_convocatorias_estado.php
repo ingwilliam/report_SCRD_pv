@@ -113,7 +113,7 @@ $pdf->AddPage('L', 'A4');
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/PropuestasWS/reporte_listado_entidades_convocatorias_estado/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ReportesWS/reporte_listado_entidades_convocatorias_estado/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
