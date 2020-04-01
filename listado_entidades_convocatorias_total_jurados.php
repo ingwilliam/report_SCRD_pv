@@ -61,7 +61,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SCRD');
-$pdf->SetTitle('LISTADO DE INSCRIPCIÓN');
+$pdf->SetTitle('LISTADO DE TOTAL');
 $pdf->SetSubject('SECTORIAL');
 $pdf->SetKeywords('PDE, PDAC, BANCO DE JURADOS');
 
@@ -125,7 +125,7 @@ $html = curl_exec ($ch);
  
  
 // cerramos la sesión cURL
-curl_close ("hh");
+curl_close ($ch);
  
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');

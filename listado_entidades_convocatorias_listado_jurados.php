@@ -61,7 +61,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SCRD');
-$pdf->SetTitle('LISTADO DE ESTADOS');
+$pdf->SetTitle('LISTADO DE JURADOS');
 $pdf->SetSubject('SECTORIAL');
 $pdf->SetKeywords('PDE, PDAC, BANCO DE JURADOS');
 
@@ -113,7 +113,7 @@ $pdf->AddPage('L', 'A4');
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ReportesWS/reporte_listado_entidades_convocatorias_estado/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ReportesWS/reporte_listado_entidades_convocatorias_listado_jurados/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
@@ -133,7 +133,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('listado_entidades_convocatorias_estado_'.$_GET["entidad"].'_'.$_GET["anio"].'.pdf', 'D');
+$pdf->Output('listado_entidades_convocatorias_listado_jurados_'.$_GET["entidad"].'_'.$_GET["anio"].'.pdf', 'D');
 
 //============================================================+
 // END OF FILE
