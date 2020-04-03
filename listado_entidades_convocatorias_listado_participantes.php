@@ -35,7 +35,7 @@ class MYPDF extends TCPDF {
                 // Logo
                 $image_file = 'images/scrd_logo.png';
                 
-                $this->Image($image_file, 145, 5, 17, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+                $this->Image($image_file, 200, 5, 17, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                 
 
                 // set style for barcode
@@ -49,7 +49,7 @@ class MYPDF extends TCPDF {
                         'module_height' => 1 // height of a single module in points
                 );
                 $this->Ln();
-                $this->write2DBarcode("https://www.culturarecreacionydeporte.gov.co/convocatorias", 'QRCODE,L', 265, 6, 10, 10, $style, 'N');
+                $this->write2DBarcode("https://www.culturarecreacionydeporte.gov.co/convocatorias", 'QRCODE,L', 320, 6, 10, 10, $style, 'N');
 
 
         }
@@ -61,7 +61,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SCRD');
-$pdf->SetTitle('LISTADO DE CONVOCATORIAS');
+$pdf->SetTitle('LISTADO DE CONTRATISTAS');
 $pdf->SetSubject('SECTORIAL');
 $pdf->SetKeywords('PDE, PDAC, BANCO DE JURADOS');
 
@@ -93,10 +93,10 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 
 // set font
-$pdf->SetFont('helvetica', '', 10);
+$pdf->SetFont('helvetica', '', 8);
 
 // add a page
-$pdf->AddPage('L', 'A4');
+$pdf->AddPage('L', 'A3');
 
 /* NOTE:
  * *********************************************************
@@ -113,11 +113,11 @@ $pdf->AddPage('L', 'A4');
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ConvocatoriasFormatos/reporte_listado_entidades_convocatorias_cerrar/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ConvocatoriasFormatos/reporte_listado_entidades_convocatorias_listado_participantes/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
-curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&anio=".$_GET["anio"]."&entidad=".$_GET["entidad"]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&entidad=".$_GET["entidad"]."&anio=".$_GET["anio"]."&convocatoria=".$_GET["convocatoria"]);
  
 // recibimos la respuesta y la guardamos en una variable
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -126,14 +126,14 @@ $html = curl_exec ($ch);
  
 // cerramos la sesión cURL
 curl_close ($ch);
- 
+
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('listado_entidades_convocatorias_cerrar_'.$_GET["entidad"].'_'.$_GET["anio"].'.pdf', 'D');
+$pdf->Output('listado_entidades_convocatorias_listado_participantes_'.$_GET["entidad"].'_'.$_GET["anio"].'_'.$_GET["convocatoria"].'.pdf', 'D');
 
 //============================================================+
 // END OF FILE

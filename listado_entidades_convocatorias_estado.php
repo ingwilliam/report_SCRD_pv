@@ -33,7 +33,7 @@ class MYPDF extends TCPDF {
         //Page header
         public function Header() {
                 // Logo
-                $image_file = K_PATH_IMAGES.'scrd_logo.png';
+                $image_file = 'images/scrd_logo.png';
                 
                 $this->Image($image_file, 145, 5, 17, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                 
@@ -113,7 +113,7 @@ $pdf->AddPage('L', 'A4');
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ReportesWS/reporte_listado_entidades_convocatorias_estado/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ConvocatoriasFormatos/reporte_listado_entidades_convocatorias_estado/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
