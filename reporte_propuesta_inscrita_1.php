@@ -1,3 +1,3 @@
 <?php
-echo "WMX2 13 abril 2020";
+echo "WMX2 20 abril 2020";
 ?>
