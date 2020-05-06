@@ -33,7 +33,7 @@ class MYPDF extends TCPDF {
         //Page header
         public function Header() {
                 // Logo
-                $image_file = 'scrd_logo.png';
+                $image_file = 'http://sicon.scrd.gov.co/admin_SCRD_pv/dist/img/scrd_logo.png';
                 
                 $this->Image($image_file, 100, 5, 17, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                 

@@ -61,7 +61,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('SCRD');
-$pdf->SetTitle('CERTIFICADO DE INSCRIPCIÓN');
+$pdf->SetTitle('REPORTE PERSONA NATURAL');
 $pdf->SetSubject('SECTORIAL');
 $pdf->SetKeywords('PDE, PDAC, BANCO DE JURADOS');
 
@@ -93,7 +93,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 
 // set font
-$pdf->SetFont('helvetica', '', 10);
+$pdf->SetFont('helvetica', '', 8);
 
 // add a page
 $pdf->AddPage();
@@ -113,11 +113,11 @@ $pdf->AddPage();
 $ch = curl_init();
  
 // definimos la URL a la que hacemos la petición
-curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/PropuestasWS/reporte_propuesta_inscrita/");
+curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ConvocatoriasFormatos/reporte_persona_natural/");
 // indicamos el tipo de petición: POST
 curl_setopt($ch, CURLOPT_POST, TRUE);
 // definimos cada uno de los parámetros
-curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&id=".$_GET["id"]."&vi=".$_GET["vi"]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "token=".$_GET["token"]."&nd=".$_GET["nd"]."&anio=".$_GET["anio"]);
  
 // recibimos la respuesta y la guardamos en una variable
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -132,7 +132,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('propuesta_inscrita_'.$_GET["id"].'.pdf', 'I');
+$pdf->Output('persona_natural_'.$_GET["nd"].'.pdf', 'D');
 
 //============================================================+
 // END OF FILE
