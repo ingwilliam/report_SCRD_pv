@@ -127,8 +127,6 @@ $html = curl_exec ($ch);
 // cerramos la sesión cURL
 curl_close ($ch);
  
-echo $html;
-exit;
 // output the HTML content
 $pdf->writeHTML($html, true, false, true, false, '');
 
