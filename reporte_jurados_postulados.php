@@ -112,6 +112,7 @@ $pdf->AddPage();
 // abrimos la sesión cURL
 $ch = curl_init();
  
+
 // definimos la URL a la que hacemos la petición
 curl_setopt($ch, CURLOPT_URL,$url_api."/crud_SCRD_pv/api/ReportejuradosPDF/juradospostulados/convocatoria/".$_GET["convocatoria"]);
 
