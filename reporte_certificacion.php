@@ -49,7 +49,9 @@ class MYPDF extends TCPDF {
                         'module_height' => 1 // height of a single module in points
                 );
                 $this->Ln();
-                $this->write2DBarcode("https://sicon.scrd.gov.co/crud_SCRD_pv/api/PropuestasWS/validar_certificado/".$_GET["id"], 'QRCODE,L', 185, 6, 10, 10, $style, 'N');
+                $codigo = str_replace('-', 'ZXXY', $_GET["id"]);
+                
+                $this->write2DBarcode("https://sicon.scrd.gov.co/crud_SCRD_pv/api/PropuestasWS/validar_certificado/".$codigo, 'QRCODE,L', 185, 6, 10, 10, $style, 'N');
 
 
         }
